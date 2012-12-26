@@ -8,9 +8,10 @@ gem 'rails', '3.2.8'
 gem 'sqlite3'
 gem 'thin'
 
-gem "therubyracer"
-gem "less-rails"
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+# JSON, API
+gem 'rabl'
+
+gem 'bootstrap-sass'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -25,11 +26,11 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'devise'
 
 group :test, :development do
   gem 'rspec-rails',      ">= 2.0.0.beta"
   gem 'machinist'
+  gem 'hirb'
 end
 
 # To use ActiveModel has_secure_password

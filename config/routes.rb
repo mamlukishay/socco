@@ -1,11 +1,16 @@
 Socco::Application.routes.draw do
-  
-  devise_for :users
 
-  root :to => "dashboard#index"
+  root :to => "players#index"
   
   resources :dashboards
   resources :players
+
+  # API Routes
+  scope "/api/v1" do
+    resources :games, :controller => "api/games" do
+      resources :players, :controller => "api/players"
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

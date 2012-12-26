@@ -11,37 +11,36 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128214216) do
+ActiveRecord::Schema.define(:version => 20121225213547) do
 
-  create_table "dashboards", :force => true do |t|
+  create_table "attendances", :force => true do |t|
+    t.integer  "player_id"
+    t.integer  "game_id"
+    t.integer  "value"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "games", :force => true do |t|
+    t.string   "address"
+    t.string   "city"
+    t.datetime "scheduled_at"
+    t.datetime "started_at"
+    t.datetime "ended_at"
+    t.boolean  "is_template"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "players", :force => true do |t|
     t.string   "fname"
     t.string   "lname"
-    t.string   "phone1"
-    t.string   "phone2"
-    t.string   "email"
-    t.datetime "birthdate"
     t.string   "nickname"
-    t.boolean  "active?"
+    t.string   "phone"
+    t.string   "email"
+    t.boolean  "is_active"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-  end
-
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

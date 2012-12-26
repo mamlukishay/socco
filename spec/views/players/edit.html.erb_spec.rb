@@ -3,13 +3,12 @@ require 'spec_helper'
 describe "players/edit" do
   before(:each) do
     @player = assign(:player, stub_model(Player,
-      :fname => "MyString",
-      :lname => "MyString",
-      :phone1 => "MyString",
-      :phone2 => "MyString",
+      :fname => "",
+      :lname => "",
+      :nickname => "",
+      :phone => "",
       :email => "MyString",
-      :nickname => "MyString",
-      :active? => false
+      :is_active => false
     ))
   end
 
@@ -20,11 +19,10 @@ describe "players/edit" do
     assert_select "form", :action => players_path(@player), :method => "post" do
       assert_select "input#player_fname", :name => "player[fname]"
       assert_select "input#player_lname", :name => "player[lname]"
-      assert_select "input#player_phone1", :name => "player[phone1]"
-      assert_select "input#player_phone2", :name => "player[phone2]"
-      assert_select "input#player_email", :name => "player[email]"
       assert_select "input#player_nickname", :name => "player[nickname]"
-      assert_select "input#player_active?", :name => "player[active?]"
+      assert_select "input#player_phone", :name => "player[phone]"
+      assert_select "input#player_email", :name => "player[email]"
+      assert_select "input#player_is_active", :name => "player[is_active]"
     end
   end
 end

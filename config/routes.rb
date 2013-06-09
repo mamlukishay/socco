@@ -7,8 +7,18 @@ Socco::Application.routes.draw do
 
   # API Routes
   scope "/api/v1" do
+    match "games/next" => "api/games#next"
     resources :games, :controller => "api/games" do
-      resources :players, :controller => "api/players"
+      
+      resources :players, :controller => "api/players", :only => [:index] do 
+        collection do
+          get 'attending' => "api/players#attending"
+          get 'tentative' => "api/players#tentative"
+          get 'not-coming' => "api/players#not_coming"
+        end  
+        
+        resources :attendances, :controller => "api/attendances", :only => [:create]                 
+      end
     end
   end
 

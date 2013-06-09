@@ -26,6 +26,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'rack-cors', :require => 'rack/cors'
 
 group :test, :development do
   gem 'rspec-rails',      ">= 2.0.0.beta"

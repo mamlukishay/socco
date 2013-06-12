@@ -13,4 +13,8 @@ class Player < ActiveRecord::Base
   scope :attending, joins(:attendances).where('attendances.value = ?', AttendanceHelper::AttendanceVals::ATTENDING)
   scope :tentative, joins(:attendances).where('attendances.value = ?', AttendanceHelper::AttendanceVals::TENTATIVE)
   scope :not_coming, joins(:attendances).where('attendances.value = ?', AttendanceHelper::AttendanceVals::NOT_COMING)
+
+  def full_name
+    "#{self.fname} #{self.lname}"
+  end
 end

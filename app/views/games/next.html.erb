@@ -1,0 +1,19 @@
+<ul id="attendance-radio" class="nav nav-pills">
+  <li class="radio-attending active"><a href="#">Yes baby!</a></li>
+  <li class="radio-maybe"><a href="#">Maybe</a></li>
+  <li class="radio-missing"><a href="#">Are you crazy?</a></li>
+</ul>
+<div id="players">
+  <table>
+  <% @players.each do |player| %>
+    <tr>
+      <td><%= player.full_name %></td>
+      <td><%= player.phone %></td>
+      <td><%= player.email %></td>
+      <td><%= link_to 'Show', player %></td>
+      <td><%= link_to 'Edit', edit_player_path(player) %></td>
+      <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>

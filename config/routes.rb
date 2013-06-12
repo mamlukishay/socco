@@ -2,8 +2,12 @@ Socco::Application.routes.draw do
 
   root :to => "players#index"
   
-  resources :dashboards
+
+  # resources :games
   resources :players
+
+  match "games/next" => "games#next"
+
 
   # API Routes
   scope "/api/v1" do
